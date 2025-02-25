@@ -15,8 +15,8 @@ appConfig:
   statusCheck: true
   statusCheckInterval: 0
   faviconApi: allesedv
-  layout: auto
-  iconSize: medium
+  layout: horizontal
+  iconSize: large
   routingMode: history
   enableMultiTasking: false
   widgetsAlwaysUseProxy: false
@@ -40,7 +40,6 @@ appConfig:
         user: jeremygf
         hash: 165b9d37396bea7341a1fe980ae04d6e609f4099f88090c0cbcc7cadbc7f6d08
     enableOidc: false
-    oidc: {}
     enableHeaderAuth: false
     headerAuth:
       userHeader: REMOTE_USER
@@ -133,6 +132,28 @@ sections:
         id: 0_956_jsoncrack
     filteredItems:
       - *ref_6
-pages:
-  - displayData:
+  - name: Data
+    icon: data
+    displayData:
+      sortBy: default
+      rows: 1
+      cols: 1
+      collapsed: false
       hideForGuests: false
+    items:
+      - &ref_7
+        title: Bold BI
+        description: Data vizualization
+        icon: >-
+          https://cdn.boldbi.com/ds/202502141134151225/cdn/images/application/boldbi/light/main_logo.svg
+        url: https://layrpro.boldbi.com/
+        target: newtab
+        tags:
+          - data
+          - visualization
+          - integration
+          - pipelines
+        provider: Syncfusion
+        id: 0_378_boldbi
+    filteredItems:
+      - *ref_7
