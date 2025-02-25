@@ -34,9 +34,11 @@ appConfig:
     hideSettings: false
     hideFooter: false
   auth:
-    enableGuestAccess: true
+    enableGuestAccess: false
     users:
-      - type: normal
+      - type: admin
+        user: jeremygf
+        hash: 165b9d37396bea7341a1fe980ae04d6e609f4099f88090c0cbcc7cadbc7f6d08
     enableOidc: false
     oidc: {}
     enableHeaderAuth: false
