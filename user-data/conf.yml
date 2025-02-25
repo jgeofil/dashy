@@ -34,7 +34,7 @@ appConfig:
     hideSettings: false
     hideFooter: false
   auth:
-    enableGuestAccess: false
+    enableGuestAccess: true
     users:
       - type: normal
     enableOidc: false
