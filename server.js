@@ -160,7 +160,8 @@ const app = express()
       config = req.body.config; // update the config
     } catch (e) {
       printWarning('Error writing config file to disk', e);
-      res.end(JSON.stringify({ success: false, message: e }));
+      printWarning('Error writing config file to disk', e);
+      res.end(JSON.stringify({ success: false, message: 'An error occurred while processing your request.' }));
     }
   }))
   // GET endpoint to trigger a build, and respond with success status and output
@@ -178,7 +179,8 @@ const app = express()
       systemInfo.success = true;
       res.end(JSON.stringify(results));
     } catch (e) {
-      res.end(JSON.stringify({ success: false, message: e }));
+      printWarning('Error occurred while fetching system info', e);
+      res.end(JSON.stringify({ success: false, message: 'An error occurred while processing your request.' }));
     }
   })
   // GET for accessing non-CORS API services
@@ -186,7 +188,8 @@ const app = express()
     try {
       corsProxy(req, res);
     } catch (e) {
-      res.end(JSON.stringify({ success: false, message: e }));
+      printWarning('Error occurred while processing CORS proxy request', e);
+      res.end(JSON.stringify({ success: false, message: 'An error occurred while processing your request.' }));
     }
   })
   // GET endpoint to return user info
@@ -195,7 +198,8 @@ const app = express()
       const user = getUser(config, req);
       res.end(JSON.stringify(user));
     } catch (e) {
-      res.end(JSON.stringify({ success: false, message: e }));
+      printWarning('Error occurred while fetching user info', e);
+      res.end(JSON.stringify({ success: false, message: 'An error occurred while processing your request.' }));
     }
   })
   // Middleware to serve any .yml files in USER_DATA_DIR with optional protection
