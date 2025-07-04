@@ -1,0 +1,74 @@
+graph LR
+    subgraph "Client Side"
+        A[Vue.js Application]
+        A --> B[Views]
+        A --> C[Components]
+        A --> D[Store/Vuex]
+        A --> E[Router]
+
+        B --> B1[Home View]
+        B --> B2[Minimal View]
+        B --> B3[Workspace View]
+        B --> B4[Login View]
+
+        C --> C1[Link Items]
+        C --> C2[Widgets]
+        C --> C3[Configuration]
+        C --> C4[Interactive Editor]
+
+        C1 --> C11[Sections]
+        C1 --> C12[Items]
+        C12 -.-> C11
+        C1 --> C13[Status Indicators]
+        C12 -.-> C13
+
+        C2 --> C21[System Monitors]
+        C2 --> C22[Service Widgets]
+        C2 --> C23[Info Widgets]
+
+        D --> D1[User Settings]
+        D --> D2[App Config]
+        D --> D3[Theme State]
+    end
+
+    subgraph "Server Side"
+        F[Nodejs Express Server]
+        F --> G[API Endpoints]
+        F --> H[Services]
+
+        G --> G1[config-manager action]
+        G --> G2[status-check]
+        G --> G3[system-info]
+
+        H --> H1[Config Validator]
+        H --> H2[Status Checker]
+        H --> H3[CORS Proxy]
+        H --> H4[Backup/Restore]
+    end
+
+    subgraph "Storage"
+        I[Configuration]
+        I --> I1[conf.yml]
+        I --> I2[Local Storage]
+        I --> I3[Cloud Backup]
+    end
+
+    subgraph "External Services"
+        J[Third-Party APIs]
+        J --> J1[Service Status APIs]
+        J --> J2[Widget Data APIs]
+        J --> J3[Authentication Providers]
+    end
+
+    A -.-> F
+    F -.-> I
+    H3 -.-> J
+    C2 -.-> J2
+    H2 -.-> J1
+    C4 -.-> D
+    C4 -.-> I
+
+    style A fill:#42b883
+    style F fill:#026e00
+    style I fill:#ff6b6b
+    style J fill:#4ecdc4
